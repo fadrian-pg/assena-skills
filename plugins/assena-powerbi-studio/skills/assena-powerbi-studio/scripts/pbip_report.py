@@ -347,7 +347,9 @@ def build_visual(v: dict, name: str, pos: tuple, z: int, res: FieldResolver, pal
         # formato condicional: el color del numero sale de una medida que devuelve un hex
         objects["labels"] = [{"properties": {"color": {"solid": {"color": {"expr": res.field_json(res.resolve(v["colorMeasure"]))}}}}}]
     if v.get("colorMeasure") and vtype in ("bar", "column"):
-        objects["dataPoint"] = [{"properties": {"fill": {"solid": {"color": {"expr": res.field_json(res.resolve(v["colorMeasure"]))}}}}}]
+        # color por punto: requiere selector dataViewWildcard (matchingOption 1)
+        objects["dataPoint"] = [{"properties": {"fill": {"solid": {"color": {"expr": res.field_json(res.resolve(v["colorMeasure"]))}}}},
+                                 "selector": {"data": [{"dataViewWildcard": {"matchingOption": 1}}]}}]
 
     if vtype == "spark":  # mini tendencia sin ejes (portada)
         objects = {"categoryAxis": [{"properties": {"show": lit(False)}}],

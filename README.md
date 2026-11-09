@@ -13,7 +13,7 @@ plugin independiente que puedes instalar en segundos, usar y mejorar.
 ## Skills disponibles
 | Skill | Version | Que hace |
 |---|---|---|
-| [assena-powerbi-studio](plugins/assena-powerbi-studio) | 0.5.0 | Convierte un proyecto de Power BI en blanco (conectado a tu BD) en un dashboard profesional: medidas DAX, calendario, portada, navegacion, modo claro/oscuro, tooltips y resumen ejecutivo con IA. |
+| [assena-powerbi-studio](plugins/assena-powerbi-studio) | 0.5.1 | Convierte un proyecto de Power BI en blanco (conectado a tu BD) en un dashboard profesional: medidas DAX, calendario, portada, navegacion, modo claro/oscuro, tooltips y resumen ejecutivo con IA. |
 
 ## Instalar en Claude Code
 ```bash

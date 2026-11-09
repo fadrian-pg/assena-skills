@@ -1,5 +1,8 @@
 # Changelog — ASSENA Power BI Studio
 
+## 0.5.1 — 2026-11-09
+- Corregido: `colorMeasure` en graficos `bar`/`column` no coloreaba cada barra. El `dataPoint` ahora incluye el selector `dataViewWildcard` (matchingOption 1) que Power BI exige para el formato condicional por punto. Verificado en Power BI Desktop.
+
 ## 0.5.0 — 2026-11-09
 - **Encabezado de alto impacto**: banda de 80 px con degradado (color de encabezado ->
   azul de marca), resplandor y ondas, linea de acento inferior; renderizada como fondo
