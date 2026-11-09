@@ -327,7 +327,7 @@ def draft_spec(summary: dict, profile: dict | None = None, palette: str = "corpo
         "title": title or "Dashboard %s" % F,
         "subtitle": "Tablero interactivo de %s" % F.lower(),
         "palette": palette,
-        "canvas": {"width": 1280, "height": 720, "headerHeight": 80},
+        "canvas": {"width": 1280, "height": 720, "bandHeight": 72, "tabHeight": 38},
         "cover": {"title": title or "Dashboard %s" % F, "subtitle": "Tablero interactivo de %s" % F.lower(),
                   "description": "Explora los indicadores clave, tendencias y el detalle por categoria. "
                                  "Usa los botones para navegar y los filtros de cada pagina para profundizar.",

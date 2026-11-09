@@ -1,5 +1,16 @@
 # Changelog — ASSENA Power BI Studio
 
+## 0.6.0 — 2026-11-09
+- **Encabezado de dos niveles** (escala a muchas paginas): banda de titulo de 72 px
+  (eyebrow, titulo y subtitulo sin recortes; controles limpiar filtros y ☀/☾ a la
+  derecha) + **barra de pestañas** de 38 px a todo el ancho con una pestaña por pagina
+  (anchos iguales, tipografia que se ajusta con 8+ paginas, pagina actual con
+  subrayado y tinte de acento). Antes los botones se amontonaban sobre el titulo.
+- Portada: el indice de contenido pasa a **dos columnas** cuando hay mas de 4 paginas
+  y nunca invade el pie.
+- Fondo de pagina: franja de pestañas integrada (superficie + borde) en claro y oscuro.
+- Spec: `canvas.bandHeight` y `canvas.tabHeight` reemplazan a `headerHeight`.
+
 ## 0.5.1 — 2026-11-09
 - Corregido: `colorMeasure` en graficos `bar`/`column` no coloreaba cada barra. El `dataPoint` ahora incluye el selector `dataViewWildcard` (matchingOption 1) que Power BI exige para el formato condicional por punto. Verificado en Power BI Desktop.
 

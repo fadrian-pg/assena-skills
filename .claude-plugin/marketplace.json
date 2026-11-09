@@ -6,14 +6,14 @@
   },
   "metadata": {
     "description": "Coleccion de skills de Claude creados por ASSENA Technologies para automatizar trabajo de analitica, desarrollo y operaciones.",
-    "version": "0.5.1"
+    "version": "0.6.0"
   },
   "plugins": [
     {
       "name": "assena-powerbi-studio",
       "source": "./plugins/assena-powerbi-studio",
       "description": "Crea dashboards profesionales de Power BI automaticamente desde un archivo en blanco conectado a tu base de datos: analiza el modelo, genera medidas DAX, calendario, tema corporativo y paginas PBIP.",
-      "version": "0.5.1",
+      "version": "0.6.0",
       "category": "data",
       "keywords": ["power-bi", "dashboard", "dax", "pbip", "pbir", "tmdl", "bi", "analytics"]
     }

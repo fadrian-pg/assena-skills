@@ -10,7 +10,7 @@ o `[Medida]` (las medidas se buscan en todo el modelo).
   "subtitle": "Fuente: ERP · actualizacion diaria",      // subtitulo por defecto de paginas
   "palette": "corporativo",                          // ver: assena_bi.py palettes
   "paletteOverrides": { "header": "#2F52A0", "accent": "#25D366" },  // opcional (marca cliente)
-  "canvas": { "width": 1280, "height": 720, "headerHeight": 68 },
+  "canvas": { "width": 1280, "height": 720, "bandHeight": 72, "tabHeight": 38 },
   "schemaVersions": { "visualContainer": "2.0.0", "page": "2.0.0" },  // opcional
   "model": {
     "calendar": {                       // opcional: crea tabla de fechas DAX (Año, Trimestre, Mes, Año Mes, Dia Semana…)

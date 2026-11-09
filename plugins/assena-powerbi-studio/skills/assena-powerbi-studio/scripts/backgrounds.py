@@ -129,7 +129,8 @@ def cover_png(pal: dict, w: int = 1600, h: int = 900, style: str = "aurora", see
     return _png(w, h, rows)
 
 
-def page_png(P: dict, accent: str, header_frac: float = 68 / 720, w: int = 1600, h: int = 900, seed: int = 11) -> bytes:
+def page_png(P: dict, accent: str, header_frac: float = 64 / 720, w: int = 1600, h: int = 900, seed: int = 11,
+             tab_frac: float = 0.0) -> bytes:
     """Fondo de pagina de contenido: banda superior con degradado (color de
     encabezado -> azul de marca), resplandor y ondas a la derecha, linea de
     acento inferior; cuerpo con el fondo de la paleta y un leve degradado."""
@@ -146,6 +147,9 @@ def page_png(P: dict, accent: str, header_frac: float = 68 / 720, w: int = 1600,
     cx, cy = 0.80 * w, hb * 0.5
     r0, step, nr = 0.03 * w, 0.03 * w, 10
     line_h = max(3, int(h * 0.004))
+    ht = int(round(h * tab_frac))           # franja de pestañas bajo la banda
+    surf = _rgb(P["surface"])
+    border = _rgb(P["border"])
     rows = []
     for y in range(h):
         row = bytearray()
@@ -167,6 +171,10 @@ def page_png(P: dict, accent: str, header_frac: float = 68 / 720, w: int = 1600,
                 c = _mix(c, [1, 1, 1], 0.05 * (1 - y / hb))
             elif y < hb + line_h:
                 c = _mix(acc, _mix(acc, [1, 1, 1], 0.45), fx)  # linea de acento
+            elif ht and y < hb + ht:
+                c = surf                                        # franja de pestañas
+            elif ht and y < hb + ht + 2:
+                c = border                                      # borde inferior de la franja
             else:
                 t = (y - hb) / (h - hb)
                 c = _mix(body_top, body_bot, t)

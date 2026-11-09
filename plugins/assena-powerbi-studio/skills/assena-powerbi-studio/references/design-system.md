@@ -3,9 +3,10 @@
 ## Lienzo y grilla
 - Pagina 1280×720 (16:9), *Ajustar a pagina*. Paginas largas: alto 1100–1400 con scroll.
 - Grilla 12 columnas · margen 16 px · separacion 12 px (la aplica `apply`).
-- Encabezado de 80 px: banda en degradado (encabezado de la paleta -> azul de marca) con
-  ondas y linea de acento, pintada como imagen de fondo de pagina; eyebrow 8 pt,
-  titulo 16 pt y subtitulo 9 pt; a la derecha, botones de navegacion y tema.
+- Encabezado de dos niveles: banda de 72 px en degradado (encabezado de la paleta ->
+  azul de marca) con ondas y linea de acento (eyebrow 8 pt, titulo 16 pt, subtitulo 9 pt,
+  controles a la derecha) + barra de pestañas de 38 px a todo el ancho, una pestaña por
+  pagina con anchos iguales; la actual con subrayado de acento. Escala a 8+ paginas.
 - Fondo de pagina `background` (gris muy claro) y tarjetas `surface` blancas con
   borde suave, radio 6 px y sombra sutil; KPIs con franja de acento superior de 4 px.
 - Botones: rectangulares, borde de 1 px, esquinas de 2 px; activo relleno de acento.

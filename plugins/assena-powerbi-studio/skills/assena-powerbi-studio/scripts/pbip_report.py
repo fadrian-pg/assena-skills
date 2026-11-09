@@ -163,7 +163,7 @@ def button_objects(v, pal):
                  _sel({"fontColor": color(v.get("hoverFontColor", "#FFFFFF"))}, "hover")],
         "fill": [_sel({"show": lit(v.get("showFill", True))}),
                  _sel({"fillColor": color(bg), "transparency": lit(v.get("transparency", 0))}, "default"),
-                 _sel({"fillColor": color(hover_bg), "transparency": lit(0)}, "hover")],
+                 _sel({"fillColor": color(hover_bg), "transparency": lit(v.get("hoverTransparency", 0))}, "hover")],
         "outline": ([_sel({"show": lit(True)}),
                      _sel({"lineColor": color(v["outline"]), "weight": lit(v.get("outlineWeight", 1)),
                            "transparency": lit(v.get("outlineTransparency", 0)), "roundEdge": lit(v.get("roundEdge", 2))}, "default"),
@@ -446,7 +446,7 @@ def header_visual(page: dict, spec: dict, pal: dict, width: int, header_h: int, 
                 "dropShadow": [{"properties": {"show": lit(False)}}],
                 "title": [{"properties": {"show": lit(False)}}],
                 "visualHeader": [{"properties": {"show": lit(False)}}],
-                "padding": [{"properties": {"top": lit(12), "left": lit(24), "right": lit(24), "bottom": lit(0)}}],
+                "padding": [{"properties": {"top": lit(8), "left": lit(24), "right": lit(24), "bottom": lit(0)}}],
             },
         },
     }
@@ -659,12 +659,20 @@ def _cover_visuals(cover, spec, pal, targets, width, height, mode_ids):
     out.append(({"type": "text", "paragraphs": [{"text": "CONTENIDO DEL INFORME", "size": 9, "bold": True,
                                                  "color": C["sub"]}]}, L, 380, 400, 22))
     n = max(len(targets), 1)
-    bh = 44 if n <= 4 else max(30, int(200 / n))
+    # indice: 1 columna hasta 4 paginas; 2 columnas para mas (sin invadir el pie)
+    cols = 1 if n <= 4 else 2
+    rows = (n + cols - 1) // cols
+    gap = 8
+    avail = (height - 76) - 406
+    bh = min(44, int((avail - gap * (rows - 1)) / rows))
+    cw = 470 if cols == 1 else 274
     for i, (pid, label) in enumerate(targets):
-        out.append(({"type": "button", "text": "%02d     %s" % (i + 1, label), "target": pid, "fontSize": 12,
+        c, r = (i // rows, i % rows) if cols == 2 else (0, i)
+        out.append(({"type": "button", "text": "%02d   %s" % (i + 1, label), "target": pid,
+                     "fontSize": 12 if cols == 1 else 10,
                      "align": "left", "fill": "#FFFFFF", "transparency": 93, "fontColor": "#FFFFFF",
                      "hoverFill": C["accent"], "outline": "#FFFFFF", "outlineTransparency": 72, "hoverOutline": C["accent"]},
-                    L, 406 + i * (bh + 8), 470, bh))
+                    L + c * (cw + 10), 406 + r * (bh + gap), cw, bh))
     # --- panel de cristal derecho
     pw, ph = 400, 476
     px, py = width - L - pw, 128
@@ -704,35 +712,46 @@ def _tooltip_visuals(tt, w, h):
             for i, r in enumerate(refs)]
 
 
-def _nav_items(pal, header_h, width, entries, current, toggle_target, toggle_to_dark, has_slicers):
-    """Barra de navegacion propia en el encabezado: Inicio + paginas (la actual
-    resaltada), boton limpiar filtros y boton de tema claro/oscuro."""
-    nh = 30
-    ny = (header_h - nh) // 2
-    items, x = [], width - 16
-    tw = 38
-    x -= tw
-    items.append(({"type": "button", "text": "☾" if toggle_to_dark else "☀", "target": toggle_target, "fontSize": 13,
-                   "fill": "#FFFFFF", "transparency": 88, "fontColor": "#FFFFFF", "hoverFill": pal["accent"],
-                   "outline": "#FFFFFF", "outlineTransparency": 60,
-                   "tooltipText": "Cambiar a modo oscuro" if toggle_to_dark else "Cambiar a modo claro"}, x, ny, tw, nh))
-    x -= 10
-    for label, pid in reversed(entries):
-        bw = max(78, int(len(label) * 6.6) + 30)
-        x -= bw
-        sel = pid == current
-        items.append(({"type": "button", "text": label, "target": pid, "fontSize": 10, "bold": sel,
-                       **({"action": "none"} if sel else {}),
-                       "fill": pal["accent"] if sel else "#FFFFFF", "transparency": 0 if sel else 92,
-                       "fontColor": "#FFFFFF" if sel else "#E2E8F0", "hoverFill": pal["accent"],
-                       "outline": "#FFFFFF" if not sel else pal["accent"], "outlineTransparency": 70 if not sel else 0},
-                      x, ny, bw, nh))
-        x -= 4
+def _nav_items(pal, band_h, tab_h, width, entries, current, toggle_target, toggle_to_dark, has_slicers, accent,
+               show_toggle=True):
+    """Encabezado de dos niveles:
+    - banda superior: titulo (izquierda) + controles (limpiar filtros, tema) a la derecha;
+    - barra de pestanas a todo el ancho: una pestana por pagina, anchos iguales, la
+      actual con subrayado de acento. Escala bien con muchas paginas."""
+    items = []
+    nh = 32
+    ny = (band_h - nh) // 2
+    x = width - 16
+    if show_toggle:
+        x -= 40
+        items.append(({"type": "button", "text": "\u263e" if toggle_to_dark else "\u2600", "target": toggle_target,
+                       "fontSize": 14, "fill": "#FFFFFF", "transparency": 88, "fontColor": "#FFFFFF", "hoverFill": accent,
+                       "outline": "#FFFFFF", "outlineTransparency": 60}, x, ny, 40, nh))
     if has_slicers:
-        x -= nh + 6
+        x -= 8 + nh
         items.append(({"type": "button", "action": "clearSlicers", "icon": "clearAllSlicers", "text": "",
-                       "fill": "#FFFFFF", "transparency": 100, "fontColor": pal["headerText"],
-                       "hoverFill": pal["accent"]}, x, ny, nh, nh))
+                       "fill": "#FFFFFF", "transparency": 88, "fontColor": "#FFFFFF", "hoverFill": accent,
+                       "outline": "#FFFFFF", "outlineTransparency": 60}, x, ny, nh, nh))
+    # barra de pestanas
+    n = max(len(entries), 1)
+    m = 16
+    tw = (width - 2 * m) / n
+    fs = 10 if n <= 7 else (9 if n <= 10 else 8)
+    ty = band_h + 3
+    th = tab_h - 3
+    dark = pal.get("mode") == "dark"
+    sel_col = _lighten(accent, 0.35) if dark else accent
+    for i, (label, pid) in enumerate(entries):
+        sel = pid == current
+        tx = m + i * tw
+        items.append(({"type": "button", "text": label, "target": pid, "fontSize": fs, "bold": sel,
+                       **({"action": "none"} if sel else {}),
+                       "fill": accent, "transparency": 90 if sel else 100,
+                       "fontColor": sel_col if sel else pal["textMuted"],
+                       "hoverFill": accent, "hoverTransparency": 85, "hoverFontColor": sel_col},
+                      tx, ty, tw - 2, th))
+        if sel:
+            items.append(({"type": "text", "text": "", "background": accent}, tx + 10, band_h + tab_h - 3, tw - 22, 3))
     return items
 
 
@@ -765,7 +784,10 @@ def build_pages(report_dir: Path, spec: dict, model: dict, pal: dict, log, repla
     res = FieldResolver(model)
     canvas = spec.get("canvas", {})
     width, height = canvas.get("width", 1280), canvas.get("height", 720)
-    header_h = canvas.get("headerHeight", 80)
+    band_h = canvas.get("bandHeight", 72)          # banda de titulo
+    tab_h = canvas.get("tabHeight", 38)            # barra de pestanas
+    nav_on = spec.get("navigation", True)
+    header_h = band_h + (tab_h if nav_on else 0)
     vc = versions["visualContainer"]
 
     cover = spec.get("cover") or None
@@ -820,7 +842,8 @@ def build_pages(report_dir: Path, spec: dict, model: dict, pal: dict, log, repla
         if spec.get("pageBackground", True):
             from backgrounds import page_png
             page_img = "Fondo_%s_%s.png" % (pal.get("id", "tema"), mode)
-            register_image(report_dir, page_img, page_png(P, brand_accent, header_h / height))
+            register_image(report_dir, page_img, page_png(P, brand_accent, band_h / height,
+                                                          tab_frac=(tab_h / height) if nav_on else 0.0))
         for k, (pid, page) in enumerate(content):
             ph = page.get("height", height)
             pdir = pages_dir / pid
@@ -830,7 +853,7 @@ def build_pages(report_dir: Path, spec: dict, model: dict, pal: dict, log, repla
             hh = header_h if page.get("header", True) else 0
             n = 0
             if hh:
-                hv = header_visual(page, spec, P, width, hh, vc, pid, transparent=bool(page_img) and ph == height)
+                hv = header_visual(page, spec, P, width, band_h, vc, pid, transparent=bool(page_img) and ph == height)
                 _write_json(pdir / "visuals" / hv["name"] / "visual.json", hv)
                 n += 1
             items = []
@@ -842,11 +865,11 @@ def build_pages(report_dir: Path, spec: dict, model: dict, pal: dict, log, repla
             for (v, x, y, w, h) in list(items):
                 if v.get("type") == "card" and not v.get("background"):
                     items.append(({"type": "text", "text": "", "background": brand_accent}, x, y, w, 4))
-            if hh and page.get("navigation", spec.get("navigation", True)):
+            if hh and nav_on and page.get("navigation", True):
                 slicers = any(it[0].get("type") == "slicer" for it in items)
-                items += _nav_items(P, hh, width, entries, pid, other["pages"][k][0] if toggle else pid,
-                                    mode == "light", slicers) if toggle else \
-                    _nav_items(P, hh, width, entries, pid, pid, True, slicers)[1:]
+                items += _nav_items(P, band_h, tab_h, width, entries, pid,
+                                    other["pages"][k][0] if toggle else pid, mode == "light", slicers,
+                                    brand_accent, show_toggle=toggle)
             n += write(pdir, items, P, dark)
             log("  + pagina '%s' [%s] (%d visuales)" % (page["name"], mode, n))
             (hidden if dark else order).append(pid)
