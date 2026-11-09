@@ -1,6 +1,6 @@
 # ASSENA Skills para Claude
 
-[![CI](https://github.com/OWNER/assena-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/assena-skills/actions/workflows/ci.yml)
+[![CI](https://github.com/fadrian-pg/assena-skills/actions/workflows/ci.yml/badge.svg)](https://github.com/fadrian-pg/assena-skills/actions/workflows/ci.yml)
 ![Licencia MIT](https://img.shields.io/badge/licencia-MIT-blue)
 ![Claude Code](https://img.shields.io/badge/Claude%20Code-plugin%20marketplace-1F5FBF)
 
@@ -17,7 +17,7 @@ plugin independiente que puedes instalar en segundos, usar y mejorar.
 
 ## Instalar en Claude Code
 ```bash
-/plugin marketplace add OWNER/assena-skills
+/plugin marketplace add fadrian-pg/assena-skills
 /plugin install assena-powerbi-studio@assena-skills
 ```
 Luego pidele a Claude, por ejemplo:
@@ -25,7 +25,7 @@ Luego pidele a Claude, por ejemplo:
 
 Instalacion local sin marketplace (Windows):
 ```powershell
-git clone https://github.com/OWNER/assena-skills.git
+git clone https://github.com/fadrian-pg/assena-skills.git
 powershell -ExecutionPolicy Bypass -File assena-skills\install.ps1
 ```
 

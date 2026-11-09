@@ -38,7 +38,7 @@ Resultado: abres el `.pbip` en Power BI Desktop, pulsas *Actualizar* y listo.
 ## Instalacion
 **Desde el marketplace (GitHub):**
 ```bash
-/plugin marketplace add OWNER/assena-skills
+/plugin marketplace add fadrian-pg/assena-skills
 /plugin install assena-powerbi-studio@assena-skills
 ```
 **Local (Windows):** ejecuta `install.ps1` en la raiz del repositorio; copia el
