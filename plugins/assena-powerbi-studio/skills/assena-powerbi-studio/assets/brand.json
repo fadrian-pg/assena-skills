@@ -1,0 +1,9 @@
+{
+  "_info": "Colores de marca para la PORTADA (estilo claro). Los graficos usan las paletas de palettes.json. Fuente: manual de marca ASSENA (sitio corporativo). Cambia estos valores para otra marca o usa cover.brandColors en la spec.",
+  "name": "ASSENA",
+  "primary": "#000080",
+  "accent": "#0066FF",
+  "text": "#4A5A80",
+  "soft": "#EAF2FF",
+  "line": "#D6E4FF"
+}

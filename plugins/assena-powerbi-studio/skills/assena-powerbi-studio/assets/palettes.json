@@ -1,0 +1,80 @@
+{
+  "_info": "Paletas profesionales validadas (metodo dataviz): orden de dataColors optimizado por enumeracion de 40.320 permutaciones para maximizar la separacion de vecinos bajo daltonismo (protan/deutan, Machado 2009, dE OKLab x100 >= 8), piso de vision normal >= 15, banda de luminosidad OKLCH, croma >= 0.10 y contraste >= 3:1 sobre la superficie de las tarjetas. Textos y estados >= 4.5:1. Ver references/design-system.md.",
+  "corporativo": {
+    "label": "Azul Corporativo - ejecutivo, directorio, uso general (recomendada)",
+    "mode": "light",
+    "header": "#0B1F3A", "headerText": "#FFFFFF", "headerSubtext": "#9FB3CF",
+    "background": "#F3F5F9", "surface": "#FFFFFF", "border": "#E3E8EF",
+    "text": "#0F172A", "textMuted": "#5B6577", "accent": "#1F5FBF", "accent2": "#2C8FCF",
+    "dataColors": ["#1F5FBF", "#D2691E", "#0F9D8A", "#7C5AC9", "#2F8A3E", "#2C8FCF", "#B98A00", "#C2477D"],
+    "good": "#15803D", "neutral": "#B45309", "bad": "#B91C1C",
+    "min": "#DCE7F7", "center": "#5B8FD6", "max": "#123A75",
+    "validation": {"cvdAdjacent": 13.7, "normalAdjacent": 21.2, "cvdTop3AllPairs": 13.7, "minContrast": 3.0}
+  },
+  "grafito": {
+    "label": "Grafito Ejecutivo - sobrio y moderno, consultoria, tecnologia",
+    "mode": "light",
+    "header": "#111827", "headerText": "#FFFFFF", "headerSubtext": "#A8B3C4",
+    "background": "#F5F5F4", "surface": "#FFFFFF", "border": "#E7E5E4",
+    "text": "#111827", "textMuted": "#57534E", "accent": "#4F46E5", "accent2": "#D97706",
+    "dataColors": ["#4F46E5", "#D97706", "#E11D48", "#0891B2", "#65A30D", "#9333EA", "#059669", "#EA580C"],
+    "good": "#15803D", "neutral": "#B45309", "bad": "#B91C1C",
+    "min": "#E0E7FF", "center": "#818CF8", "max": "#312E81",
+    "validation": {"cvdAdjacent": 9.4, "normalAdjacent": 16.6, "cvdTop3AllPairs": 9.4, "minContrast": 3.0}
+  },
+  "esmeralda": {
+    "label": "Finanzas Esmeralda - estados financieros, presupuesto, banca",
+    "mode": "light",
+    "header": "#0B2B26", "headerText": "#FFFFFF", "headerSubtext": "#9CC9B8",
+    "background": "#F4F7F5", "surface": "#FFFFFF", "border": "#E1E8E4",
+    "text": "#0F1F1B", "textMuted": "#4F6159", "accent": "#047857", "accent2": "#1D4ED8",
+    "dataColors": ["#047857", "#1D4ED8", "#DB2777", "#B45309", "#7C3AED", "#BE123C", "#0284C7", "#A16207"],
+    "good": "#15803D", "neutral": "#B45309", "bad": "#B91C1C",
+    "min": "#D1FAE5", "center": "#34A37E", "max": "#064E3B",
+    "validation": {"cvdAdjacent": 10.2, "normalAdjacent": 16.7, "cvdTop3AllPairs": 9.6, "minContrast": 3.0}
+  },
+  "atardecer": {
+    "label": "Comercial Atardecer - ventas, marketing, retail, e-commerce",
+    "mode": "light",
+    "header": "#1C1917", "headerText": "#FFFFFF", "headerSubtext": "#D6C3B5",
+    "background": "#FAF7F5", "surface": "#FFFFFF", "border": "#EDE5DF",
+    "text": "#1C1917", "textMuted": "#6B5E57", "accent": "#C2410C", "accent2": "#0D9488",
+    "dataColors": ["#C2410C", "#0D9488", "#1D4ED8", "#BE185D", "#6D28D9", "#B45309", "#0369A1", "#15803D"],
+    "good": "#15803D", "neutral": "#B45309", "bad": "#B91C1C",
+    "min": "#FFEDD5", "center": "#F28C4E", "max": "#7C2D12",
+    "validation": {"cvdAdjacent": 13.7, "normalAdjacent": 18.8, "cvdTop3AllPairs": 13.7, "minContrast": 3.0}
+  },
+  "oceano": {
+    "label": "Operaciones Oceano - logistica, inventario, compras, TI",
+    "mode": "light",
+    "header": "#082F49", "headerText": "#FFFFFF", "headerSubtext": "#93C5E3",
+    "background": "#F0F6FA", "surface": "#FFFFFF", "border": "#DCE7EF",
+    "text": "#0C1F2E", "textMuted": "#4D6375", "accent": "#0369A1", "accent2": "#0D9488",
+    "dataColors": ["#0369A1", "#A16207", "#0D9488", "#7C3AED", "#DC2626", "#0891B2", "#D97706", "#DB2777"],
+    "good": "#15803D", "neutral": "#B45309", "bad": "#B91C1C",
+    "min": "#E0F2FE", "center": "#38A3D6", "max": "#0C4A6E",
+    "validation": {"cvdAdjacent": 13.5, "normalAdjacent": 19.8, "cvdTop3AllPairs": 13.5, "minContrast": 3.0}
+  },
+  "clinico": {
+    "label": "Salud Clinico - hospitales, laboratorios, farmacia",
+    "mode": "light",
+    "header": "#0B3B3F", "headerText": "#FFFFFF", "headerSubtext": "#9FD3CF",
+    "background": "#F2F8F8", "surface": "#FFFFFF", "border": "#DCEBEB",
+    "text": "#0E2A2D", "textMuted": "#4C6567", "accent": "#0D9488", "accent2": "#1D4ED8",
+    "dataColors": ["#0D9488", "#1D4ED8", "#65A30D", "#7C3AED", "#D97706", "#DB2777", "#0284C7", "#DC2626"],
+    "good": "#15803D", "neutral": "#B45309", "bad": "#B91C1C",
+    "min": "#CCFBF1", "center": "#2DB3A6", "max": "#134E4A",
+    "validation": {"cvdAdjacent": 14.1, "normalAdjacent": 20.3, "cvdTop3AllPairs": 13.8, "minContrast": 3.0}
+  },
+  "medianoche": {
+    "label": "Medianoche (oscuro) - salas de reunion, pantallas grandes, NOC",
+    "mode": "dark",
+    "header": "#020617", "headerText": "#F8FAFC", "headerSubtext": "#94A3B8",
+    "background": "#0F172A", "surface": "#1E293B", "border": "#334155",
+    "text": "#E2E8F0", "textMuted": "#94A3B8", "accent": "#3B82F6", "accent2": "#D97706",
+    "dataColors": ["#3B82F6", "#D97706", "#EC4899", "#EA580C", "#0891B2", "#EF4444", "#8B5CF6", "#059669"],
+    "good": "#34D399", "neutral": "#FBBF24", "bad": "#F87171",
+    "min": "#1E3A5F", "center": "#3B82F6", "max": "#BFDBFE",
+    "validation": {"cvdAdjacent": 14.1, "normalAdjacent": 16.2, "cvdTop3AllPairs": 14.4, "minContrast": 3.0}
+  }
+}

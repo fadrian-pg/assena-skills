@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.assena_backups/
+*.sqlite
+.DS_Store
+demo/
+*.pbix
+.venv/

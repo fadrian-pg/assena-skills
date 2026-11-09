@@ -1,0 +1,10 @@
+{
+  "name": "assena-powerbi-studio",
+  "description": "Crea dashboards profesionales e interactivos de Power BI de forma automatica a partir de un proyecto en blanco conectado a una base de datos (SQL Server, PostgreSQL, MySQL, CSV). Analiza y perfila los datos, genera medidas DAX, tabla calendario, tema de colores corporativo y paginas de informe en formato PBIP/PBIR.",
+  "version": "0.5.0",
+  "author": {
+    "name": "ASSENA Technologies"
+  },
+  "license": "MIT",
+  "keywords": ["power-bi", "dashboard", "dax", "pbip", "pbir", "tmdl", "business-intelligence", "data-visualization"]
+}
